@@ -1,10 +1,21 @@
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import About from "./Pages/About/About";
+import Courses from "./Pages/Courses/Courses";
+import Home from "./Pages/Home/Home";
+import Login from "./Pages/Login/Login";
+import Navbar from "./Pages/Shared/Navbar";
 
 function App() {
   return (
     <div className="">
-      <h1 className='text-3xl font-bold underline'>Welcome</h1>
-      <button class="btn btn-primary">Button</button>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="courses" element={<Courses />} />
+        <Route path="about" element={<About />} />
+        <Route path="login" element={<Login />} />
+      </Routes>
     </div>
   );
 }
