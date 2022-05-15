@@ -1,9 +1,12 @@
 import React from 'react';
+import Footer from '../Shared/Footer';
+import Banner from './Banner';
 
 const Home = () => {
   return (
-    <div>
-      <h1>This is Home</h1>
+    <div className='px-12'>
+      <Banner />
+      <Footer />
     </div>
   );
 };
