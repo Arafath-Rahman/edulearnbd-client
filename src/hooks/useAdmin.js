@@ -1,29 +1,26 @@
 import { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../firebase.init";
 
-const useAdmin = user => {
+const useAdmin = () => {
 
-  const [admin, setAdmin] = useState(false);
-  const [adminLoading, setAdminLoading] = useState(true);
+  const [user] = useAuthState(auth);
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  useEffect( ()=> {
-    const email = user?.email;
-    if(email){
-      fetch(`http://localhost:5000/admin/${email}`, {
-        method: 'GET',
-        headers: {
-          'content-type': 'application/json',
-          authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+  useEffect(() => {
+    fetch(`http://localhost:5000/user/${user?.email}`, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("user data ==>", data);
+        if (data.role === "admin") {
+          setIsAdmin(true);
         }
-      })
-      .then(res => res.json())
-      .then(data => {
-        setAdmin(data.admin);
-        setAdminLoading(false);
-      })
-    }
-  }, [user])
+      });
+  }, [user]);
 
-  return [admin, adminLoading];
+  return [isAdmin];
 }
 
 export default useAdmin;

@@ -4,7 +4,7 @@ import Banner from './Banner';
 
 const Home = () => {
   return (
-    <div className='px-12'>
+    <div className=''>
       <Banner />
       <Footer />
     </div>

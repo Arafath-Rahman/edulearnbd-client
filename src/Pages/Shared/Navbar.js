@@ -1,13 +1,61 @@
-import React from "react";
+import { signOut } from "firebase/auth";
+import { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
 
 const Navbar = () => {
-  const menuItems = [
-    <Link to="/">Home</Link>,
-    <Link to="course">Courses</Link>,
-    <Link to="about">About</Link>,
-    <Link to="login">Login</Link>,
-  ];
+  const [user] = useAuthState(auth);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const logOut = () => {
+    setIsAdmin(false);
+    signOut(auth);
+  }
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/user/${user?.email}`, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("user data ==>", data);
+        if (data.role === "admin") {
+          setIsAdmin(true);
+        }
+      });
+  }, [user]);
+
+  const menuItems = (
+    <>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="course">Courses</Link>
+      </li>
+      <li>
+        <Link to="about">About</Link>
+      </li>
+      {
+        isAdmin && <li>
+          <Link to="add">Add Course</Link>
+        </li>
+      }
+      {user ? (
+        <li>
+          <button onClick={logOut} className="btn btn-primary">
+            LogOut
+          </button>
+        </li>
+      ) : (
+        <li>
+          <Link to="login">Login</Link>
+        </li>
+      )}
+    </>
+  );
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -32,9 +80,7 @@ const Navbar = () => {
             tabIndex="0"
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
-            {menuItems.map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
+            {menuItems}
           </ul>
         </div>
         <Link to="" className="btn btn-ghost normal-case text-xl">
@@ -42,11 +88,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-end hidden lg:flex lg:mr-5">
-        <ul className="menu menu-horizontal p-0">
-          {menuItems.map((item, i) => (
-            <li key={i}>{item}</li>
-          ))}
-        </ul>
+        <ul className="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
     </div>
   );

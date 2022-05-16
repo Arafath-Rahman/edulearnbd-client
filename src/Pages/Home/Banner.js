@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import homeBanner from '../../Asset/images/banner.jpg';
 
 const Banner = () => {
   return (
-    <div>
+    <div className="px-12">
       <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <img
@@ -18,7 +19,7 @@ const Banner = () => {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
-            <button className="btn btn-primary text-base-100">Available Courses</button>
+            <Link to="course" className="btn btn-primary text-base-100">Available Courses</Link>
           </div>
         </div>
       </div>
