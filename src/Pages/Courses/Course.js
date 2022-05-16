@@ -1,20 +1,20 @@
 import React from "react";
 
-const Course = () => {
+const Course = ({ c }) => {
   return (
     <div>
-      <div className="card lg:card-side bg-base-100 shadow-xl">
+      <div className="card max-w-lg bg-base-100 shadow-xl">
         <figure>
           <img
-            src="https://api.lorem.space/image/album?w=400&h=400"
-            alt="Album"
+            src={c?.img}
+            alt="course"
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">New album is released!</h2>
-          <div className="flex justify-end">
-            <button className="btn btn-primary mr-2">Edit</button>
-            <button className="btn btn-primary mr-2">View</button>
+          <h2 className="card-title">{c?.name}</h2>
+          <p><strong>Price: {c?.price}</strong></p>
+          <div className="card-actions justify-end">
+            <button className="btn btn-primary">Buy Now</button>
           </div>
         </div>
       </div>

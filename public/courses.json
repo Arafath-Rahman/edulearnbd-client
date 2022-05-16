@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Learn MongoDB",
+    "price": 4000,
+    "img": "https://i.ibb.co/DwRrB9g/mongodb.jpg",
+    "content": ["link1", "link2", "link3", "link4"]
+  },
+  {
+    "name": "Node.Js Course for Beginner",
+    "price": 5000,
+    "img": "https://i.ibb.co/LrcL9yW/node.jpg",
+    "content": ["link1", "link2", "link3", "link4"]
+  },
+  {
+    "name": "Learn React.js",
+    "price": 3000,
+    "img": "https://i.ibb.co/JjJXzJj/react1.jpg",
+    "content": ["link1", "link2", "link3", "link4"]
+  },
+  {
+    "name": "Master React.js",
+    "price": 2000,
+    "img": "https://i.ibb.co/y5RWzwX/react2.jpg",
+    "content": ["link1", "link2", "link3", "link4"]
+  }
+]
