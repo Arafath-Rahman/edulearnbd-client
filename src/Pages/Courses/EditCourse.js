@@ -30,7 +30,7 @@ const EditCourse = () => {
     event.preventDefault();
     const linkValue = event.target.link.value;
 
-    fetch(`http://localhost:5000/course/edit/${id}?link=${linkValue}`, {
+    fetch(`https://edulearnbd.herokuapp.com/course/edit/${id}?link=${linkValue}`, {
       method: "PATCH",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
