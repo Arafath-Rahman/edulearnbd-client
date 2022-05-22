@@ -8,7 +8,7 @@ const useAdmin = () => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/user/${user?.email}`, {
+    fetch(` http://localhost:5000/user/${user?.email}`, {
       method: "GET",
     })
       .then((res) => res.json())

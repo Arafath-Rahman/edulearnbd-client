@@ -6,7 +6,7 @@ const Courses = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect( ()=> {
-    fetch('http://localhost:5000/course')
+    fetch(' http://localhost:5000/course')
     .then(res =>  res.json())
     .then(data => setCourses(data))
   }, [])
@@ -18,7 +18,7 @@ const Courses = () => {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-12">
         {
-          courses.map(course => <Course key={course._id} c={course}/>)
+          courses.map(course => <Course key={course._id} course={course}/>)
         }
       </div>
       <div className="pt-6">

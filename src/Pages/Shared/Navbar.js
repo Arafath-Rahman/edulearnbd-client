@@ -14,7 +14,7 @@ const Navbar = () => {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:5000/user/${user?.email}`, {
+    fetch(` http://localhost:5000/user/${user?.email}`, {
       method: "GET",
     })
       .then((res) => res.json())

@@ -15,7 +15,7 @@ const AddCourse = () => {
   const onSubmit = async (data) => {
     console.log(data);
 
-    fetch('http://localhost:5000/course', {
+    fetch(' http://localhost:5000/course', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
