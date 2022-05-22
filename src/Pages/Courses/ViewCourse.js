@@ -6,7 +6,7 @@ const ViewCourse = () => {
   const [course, setCourse] = useState(null);
 
   useEffect(() => {
-    fetch(` http://localhost:5000/course/${id}`, {
+    fetch(`https://edulearnbd.herokuapp.com/course/${id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

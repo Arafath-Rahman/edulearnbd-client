@@ -8,7 +8,7 @@ const useToken = user => {
     const currentUser = { email: email, role: 'user'};
     
     if(email){
-      fetch(` http://localhost:5000/user/${email}`, {
+      fetch(`https://edulearnbd.herokuapp.com/user/${email}`, {
         method: 'PUT',
         headers: {
           'content-type': 'application/json',

@@ -6,7 +6,7 @@ const Courses = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect( ()=> {
-    fetch(' http://localhost:5000/course')
+    fetch('https://edulearnbd.herokuapp.com/course')
     .then(res =>  res.json())
     .then(data => setCourses(data))
   }, [])
